@@ -1,5 +1,16 @@
 /****************************TAG SELECTORS*********************/
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3rem;
+  line-height: 1.5;
+}
+h3 {
+  font-family: 'Ubuntu', sans-serif;
+}
 /****************************CLASS SELECTORS*******************/
+.title-container {
+  padding: 3% 15%;
+}
 /****************************ID SELECTORS**********************/
 #title {
   background-color: #ff4c68;
