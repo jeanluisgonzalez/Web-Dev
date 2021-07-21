@@ -6,6 +6,10 @@ h1 {
 body {
   font-family: sans-serif;
 }
+p {
+  color: #8f8f8f;
+  font-family: sans-serif;
+}
 /****************************CLASS SELECTORS*******************/
 .title-container {
   padding: 3% 15%;
@@ -102,11 +106,24 @@ font-family: 'Montserrat', sans-serif;
   background-color: #ef8172;
   text-align: center;
   padding-bottom: 3%;
+
 }
 .press-logo {
   width: 15%;
   margin: 20px 20px 50px;
 }
+/* Pricing Section */
+#pricing {
+  padding: 100px;
+  text-align: center;
+}
+.pricing-column {
+  padding: 3% 2%;
+}
+.pricing-title {
+  font-family: "Montserrat";
+}
+
 /****************************ID SELECTORS**********************/
 #title {
   background-color: #ff4c68;
