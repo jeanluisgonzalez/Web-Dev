@@ -11,8 +11,16 @@ p {
   font-family: sans-serif;
 }
 /****************************CLASS SELECTORS*******************/
+/* Title */
+#title {
+  background-color: #ff4c68;
+  color: #fff;
+
+
+}
 .title-container {
   padding: 3% 15%;
+  position: relative;
 }
 .title-description {
   font-size: 3rem;
@@ -46,17 +54,27 @@ font-family: 'Montserrat', sans-serif;
 }
 /* Title img */
 .title-img {
-  width: 60%;
+  width: 20%;
   -webkit-transform:rotate(25deg);
   -moz-transform: rotate(25deg);
   -ms-transform: rotate(25deg);
   -o-transform: rotate(25deg);
   transform: rotate(25deg);
+  position: absolute;
+
+
+
 }
 
 /* Features */
-.fetures-container {
+#features {
   padding: 7% 15%;
+  background-color: #fff;
+  position: relative;
+  z-index: 1;
+}
+.fetures-container {
+
 }
 .features-text {
   text-align: center;
@@ -122,10 +140,4 @@ font-family: 'Montserrat', sans-serif;
 }
 .pricing-title {
   font-family: "Montserrat";
-}
-
-/****************************ID SELECTORS**********************/
-#title {
-  background-color: #ff4c68;
-  color: #fff;
 }
