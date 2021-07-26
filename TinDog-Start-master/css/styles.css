@@ -54,7 +54,7 @@ font-family: 'Montserrat', sans-serif;
 }
 /* Title img */
 .title-img {
-  width: 23%;
+  width: 35%;
   -webkit-transform:rotate(25deg);
   -moz-transform: rotate(25deg);
   -ms-transform: rotate(25deg);
@@ -140,7 +140,34 @@ font-family: 'Montserrat', sans-serif;
 }
 .pricing-title {
   font-family: "Montserrat";
+  }
+
+/* Cta section */
+#cta {
+  background-color: #ff4c68;
+  color: #fff;
+  text-align: center;
+  padding: 7% 15% 7%;
+
 }
+.cta-text {
+
+  font-size: 3.5rem;
+  line-height: 1.5;
+  font-family: 'Montserrat', sans-serif;
+  padding-bottom: 1rem;
+}
+/* Footer section */
+#footer {
+  background-color: #fff;
+  text-align: center;
+  padding: 7% 15% 3%;
+}
+.footer-icon {
+  margin: 20px 10px;
+}
+/* Media */
+
 @media (max-width: 1028px) {
   #title {
     text-align: center;
