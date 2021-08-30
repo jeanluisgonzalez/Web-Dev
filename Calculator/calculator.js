@@ -22,8 +22,8 @@ app.get('/bmicalculator',(req,res)=>{
   res.sendFile(__dirname + "/bmicalculator.html");
 });
 app.post('/bmicalculator',(req,res)=>{
-  var h = Number(req.body.h);
-  var w = Number(req.body.w);
+  var h = parseFloat(req.body.h);
+  var w = parseFloat(req.body.w);
   var bmi = w/Math.pow(h,2);
   //console.log(bmi);
   res.send("Your BMI is "+ bmi);
