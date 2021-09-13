@@ -10,12 +10,23 @@ app.get("/",(req,res)=>{
   res.sendFile(__dirname+"/signup.html");
 });
 app.post("/",(req,res)=>{
-  const fistName = req.body.fistName;
-  const lastName = req.body.lastName;
-  const email = req.body.email;
-  console.log("fist name: "+fistName+" last name: "+lastName+" Email: "+email);
+  var fistName = req.body.fistName;
+  var lastName = req.body.lastName;
+  var email = req.body.email;
+
+  var data = {
+    
+  }
+
+
   res.sendFile(__dirname+"/signup.html");
 });
 app.listen(3000,()=>{
   console.log("Server is running on port 3000");
 });
+
+//API Key
+// b2ba8081c2f545f8c998c0f0f2f00a3f-us5
+
+//list
+// 0d09891d17
