@@ -41,9 +41,16 @@ app.post("/",(req,res)=>{
       //console.log(JSON.parse(data));
     });
     console.log(response.statusCode);
+    if(response.statusCode === 200){
+      res.sendFile(__dirname+"/signup.html");
+    }else {
+      res.send("Error:"+response.statusCode);
+    }
+
   });
   jsonRequest.write(jsonData);
   jsonRequest.end();
+
   //res.sendFile(__dirname+"/signup.html");
 });
 app.listen(3000,()=>{
