@@ -42,9 +42,9 @@ app.post("/",(req,res)=>{
     });
     console.log(response.statusCode);
     if(response.statusCode === 200){
-      res.sendFile(__dirname+"/signup.html");
+      res.sendFile(__dirname+"/success.html");
     }else {
-      res.send("Error:"+response.statusCode);
+      res.send(__dirname+"/failure.html");
     }
 
   });
