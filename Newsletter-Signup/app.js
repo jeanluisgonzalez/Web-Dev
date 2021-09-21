@@ -33,9 +33,6 @@ app.post("/",(req,res)=>{
     auth: "jgonzaleza:b2ba8081c2f545f8c998c0f0f2f00a3f-us5"
   }
 
-
-
-
   const jsonRequest =  https.request(url, options, (response)=>{
     response.on("data",(data)=>{
       //console.log(JSON.parse(data));
@@ -52,6 +49,9 @@ app.post("/",(req,res)=>{
   jsonRequest.end();
 
   //res.sendFile(__dirname+"/signup.html");
+});
+app.post("/failure",(req,res)=>{
+  res.redirect(__dirname+"/signup.html");
 });
 app.listen(3000,()=>{
   console.log("Server is running on port 3000");
