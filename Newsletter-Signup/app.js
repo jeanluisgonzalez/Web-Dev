@@ -39,9 +39,10 @@ app.post("/",(req,res)=>{
     });
     console.log(response.statusCode);
     if(response.statusCode === 200){
-      res.sendFile(__dirname+"/success.html");
+
+      res.sendFile(__dirname+"/failure.html");
     }else {
-      res.send(__dirname+"/failure.html");
+        res.sendFile(__dirname+"/success.html");
     }
 
   });
