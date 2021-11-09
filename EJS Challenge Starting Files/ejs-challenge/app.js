@@ -16,7 +16,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 app.get("/",(req,res)=>{
-  res.render("home",{Content:homeStartingContent,posts:posts});
+  res.render("home",{
+    Content: homeStartingContent,
+    posts: posts
+  });
 });
 app.get("/about",(req,res)=>{
   res.render("about",{Content:aboutContent});
@@ -30,9 +33,7 @@ app.get("/posts/:postName",(req,res)=>{
     const storedTitle = _.lowerCase(post.title);
 
     if(storedTitle === requestedTitle ){
-      console.log("Match found!");
-    }else{
-      console.log("Match not found!");
+      res.render("post",{title:post.title,content:post.content});
     }
   });
 });
@@ -47,19 +48,6 @@ app.post("/compose",(req,res)=>{
   posts.push(post);
   res.redirect("/");
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");
