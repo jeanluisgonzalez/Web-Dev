@@ -3,7 +3,11 @@ const mongoose = require('mongoose');
 mongoose.connect("mongodb://localhost:27017/fruitsDB");
 
 const fruitSchema = new mongoose.Schema({
-  name: String,
+  name: {
+    type: String,
+    trim: true,
+    required: [true,"Please check your date entry, no name specified!"]
+  },
   rating: {
     type: Number,
     min: 1,
@@ -13,8 +17,16 @@ const fruitSchema = new mongoose.Schema({
 });
 
 const personSchema = new mongoose.Schema({
-  name: String,
-  age: Number
+  name: {
+    type: String,
+    trim: true,
+    required: [true,"Please check your date entry, no name specified!"]
+  },
+  age: {
+    type: Number,
+    required: [true]
+  },
+  favoriteFruit: fruitSchema
 });
 
 const Fruit = mongoose.model("Fruit",fruitSchema);
@@ -33,30 +45,52 @@ const kiwi = new Fruit({
 const orange = new Fruit({
   name: "Orange",
   rating: 9,
-  review: "Pretty good "
+  review: "Pretty good"
 });
 const banana = new Fruit({
-  name: "Banana",
+  name: "banana",
+  rating: 7,
+  review: "Pretty good"
+});
+
+const pineapple = new Fruit({
+  name: "Pineapple",
   rating: 9,
-  review: "nice fruit"
+  review:"Great fruit"
+});
+
+const mango = new Fruit({
+  name: "Mango",
+  rating: 6,
+  review: "Decent fruit"
 });
 
 const person = new Person ({
-  name:"Jean",
-  Age: 25
+  name:"John",
+  age: 37
 });
-
-
-// Fruit.insertMany([apple,kiwi,orange,banana],function(err){
+// person.save(function(err){
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log("Successfully saved");
+//   }
+// });
+// Fruit.insertMany([apple,kiwi,orange,banana,mango,pineapple],function(err){
 //   if(err){
 //     console.log(err);
 //   }else{
 //     console.log("Successfully saved all the fruits to fruitsDB");
 //   }
+//   mongoose.connection.close()
 // })
 
-// person.save(function(){
-//    mongoose.connection.close();
+// mango.save(function(err){
+//   if (err) {
+//     console.log(err);
+//   }else {
+//     console.log("Save Successfully");
+//   }
 // });
 
 Fruit.find(function(err,fruits){
@@ -68,13 +102,49 @@ Fruit.find(function(err,fruits){
       console.log(fruit.name);
     });
   }
-mongoose.connection.close();
 });
 
+Person.find(function(err,people){
+  if(err){
+    console.log(err);
+  }else{
+    people.forEach(function(person){
+      console.log(person.name);
+    });
+  }
+  mongoose.connection.close();
+});
+
+// Person.updateOne({name: "John"},{favoriteFruit: fruit}, function(err){
+//   if (err) {
+//     console.log(err);
+//   }else {
+//     console.log("Successfully updated the document");
+//   }
+// });
+
+
+// Fruit.deleteOne({_id:"619bf0040a0c2da5e3c403af"},function(err){
+//   if (err) {
+//     console.log(err);
+//   }else {
+//     console.log("Successfully deleted the document");
+//   }
+//   mongoose.connection.close();
+// });
+
+// Fruit.deleteMany({name:"Jhon"},function(err){
+//   if (err) {
+//     console.log(err);
+//   }else {
+//     console.log("Successfully deleted all documents");
+//   }
+//   mongoose.connection.close();
+// });
 
 
 
 // mongoose.connection.close();
-// fruit.save();
+// banana.save();
 
 // insertDocuments().catch(console.dir);
