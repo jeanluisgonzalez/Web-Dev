@@ -4,7 +4,11 @@ mongoose.connect("mongodb://localhost:27017/fruitsDB");
 
 const fruitSchema = new mongoose.Schema({
   name: String,
-  rating: Number,
+  rating: {
+    type: Number,
+    min: 1,
+    max: 10
+  },
   review: String
 });
 
@@ -42,6 +46,19 @@ const person = new Person ({
   Age: 25
 });
 
+
+// Fruit.insertMany([apple,kiwi,orange,banana],function(err){
+//   if(err){
+//     console.log(err);
+//   }else{
+//     console.log("Successfully saved all the fruits to fruitsDB");
+//   }
+// })
+
+// person.save(function(){
+//    mongoose.connection.close();
+// });
+
 Fruit.find(function(err,fruits){
 
   if(err){
@@ -51,22 +68,10 @@ Fruit.find(function(err,fruits){
       console.log(fruit.name);
     });
   }
-
-  mongoose.connection.close();
+mongoose.connection.close();
 });
-// Fruit.insertMany([apple,kiwi,orange,banana],function(err){
-//   if(err){
-//     console.log(err);
-//   }else{
-//     console.log("Successfully saved all the fruits to fruitsDB");
-//   }
-//     mongoose.connection.close();
-// })
 
 
-// person.save(function(){
-//   mongoose.connection.close();
-// });
 
 
 // mongoose.connection.close();
