@@ -25,8 +25,13 @@ const itemsSchema = new mongoose.Schema({
   }
 });
 
-const Item = mongoose.model("Item", itemsSchema);
+const listSchema = new mongoose.Schema({
+  name: String,
+  items: [itemsSchema]
+});
 
+const Item = mongoose.model("Item", itemsSchema);
+const List = mongoose.model("List", listSchema);
 
 const item1 = new Item({
   name: "Welcome to your todolist!"
@@ -41,11 +46,9 @@ const item3 = new Item({
 const defaultItems = [item1, item2, item3];
 
 
-
-
 app.get("/", function(req, res) {
 
-  Item.find({listName:"home"},function(err, foundItems) {
+  Item.find(function(err, foundItems) {
     if (foundItems.length === 0) {
       Item.insertMany(defaultItems, function(err) {
         if (err) {
@@ -88,8 +91,33 @@ app.post("/delete",function(req,res){
   res.redirect("/");
 });
 app.get("/:customListName",function(req,res){
-  const listName=_.lowerCase(req.params.customListName);
-  console.log(listName);
+  const customListName =req.params.customListName;
+
+  const list = new List({
+    name:customListName,
+    items: defaultItems
+  });
+
+  List.find({name: customListName},function(err,foundList){
+      if (foundList.length === 0) {
+        const list = new List({
+          name:customListName,
+          items: defaultItems
+        });
+        list.save();
+        res.redirect("/"+customListName);
+      } else {
+
+        // res.render("list", {
+        //   listTitle:foundList.name ,
+        //   newListItems: foundList.items
+        // });
+        console.log(foundList.items);
+      }
+  });
+
+
+
 });
 app.get("/about", function(req, res) {
   res.render("about");
