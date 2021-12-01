@@ -45,7 +45,7 @@ const item3 = new Item({
 
 const defaultItems = [item1, item2, item3];
 
-
+app.get('/favicon.ico', (req, res) => res.status(204));
 app.get("/", function(req, res) {
 
   Item.find(function(err, foundItems) {
@@ -70,74 +70,84 @@ app.get("/", function(req, res) {
 
 });
 
-// app.post("/", function(req, res) {
-//   const itemName = req.body.newItem;
-//   const listName = req.body.list;
-//   const newItem = new Item({
-//     name: itemName
-//   });
-//
-//   if (listName=== "Today") {
-//     newItem.save();
-//     res.redirect("/");
-//   }else {
-//     List.findOne({name:listName},function(err,foundList){
-//       if(!err){
-//         if(!foundList){
-//           console.log("no list founded");
-//         }else{
-//           foundList.items.push(newItem);
-//           const newListItem = foundList.items;
-//           console.log(newListItem);
-//           res.redirect("/"+listName);
-//           // List.updateOne({name:listName},{items: newListItem});
-//         }
-//       }
-//
-//     });
-//
-//   }
-//
-//
-// });
+app.post("/", function(req, res) {
+  const itemName = req.body.newItem;
+  const listName = req.body.list;
+  const newItem = new Item({
+    name: itemName
+  });
+
+  if (listName=== "Today") {
+    newItem.save();
+    res.redirect("/");
+  }else {
+    List.findOne({name:listName},function(err,foundList){
+      if(!err){
+        if(!foundList){
+          console.log("no list founded");
+        }else{
+          foundList.items.push(newItem);
+          foundList.save();
+          res.redirect("/"+listName);
+        }
+      }
+
+    });
+
+  }
+
+
+});
 
 app.post("/delete",function(req,res){
   const deleteItem = req.body.checkbox;
-  Item.findByIdAndRemove(deleteItem,function(err){
-    if(!err){
-      console.log("Successfully deleted checked item.");
-    }
-  });
-  res.redirect("/");
+  const listName = req.body.listName;
+
+  if (listName === "Today") {
+    Item.findByIdAndRemove(deleteItem,function(err){
+      if(!err){
+        console.log("Successfully deleted checked item.");
+      }
+    });
+    res.redirect("/");
+  } else {
+    List.findOneAndUpdate({ name: listName },{$pull: {items:{_id:deleteItem}}},function(err,foundList){
+      if (!err) {
+        res.redirect("/"+listName);
+      }
+    });
+
+  }
+
+
 });
 
 app.get("/:customListName",function(req,res){
-  const customListName =req.params.customListName;
-  console.log(customListName);
-  // List.findOne({name: customListName},function(err,foundList){
-  //   if (!err) {
-  //     if (!foundList) {
-  //       const list = new List({
-  //         name:customListName,
-  //         items: defaultItems
-  //       });
-  //
-  //       list.save(function(err){
-  //         if (!err) {
-  //           console.log("save:"+customListName);
-  //           res.redirect("/"+customListName);
-  //         }
-  //       });
-  //
-  //     }else{
-  //       res.render("list", {
-  //           listTitle:foundList.name,
-  //           newListItems: foundList.items
-  //       });
-  //     }
-  //   }
-  //
-  // });
+  const customListName =_.capitalize(req.params.customListName);
+  List.findOne({name: customListName},function(err,foundList){
+    if (!err) {
+      if (!foundList) {
+        const list = new List({
+          name:customListName,
+          items: defaultItems
+        });
+
+        list.save(function(err){
+          if (!err) {
+            console.log("save:"+customListName);
+            res.redirect("/"+customListName);
+          }
+        });
+
+      }else{
+        res.render("list", {
+            listTitle:foundList.name,
+            newListItems: foundList.items
+        });
+      }
+    }
+
+  });
 
 });
 
