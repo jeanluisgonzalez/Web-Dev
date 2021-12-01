@@ -60,7 +60,7 @@ app.get("/", function(req, res) {
       });
     } else {
       res.render("list", {
-        listTitle: "24 november 2021",
+        listTitle: "Today",
         newListItems: foundItems
       });
     }
@@ -70,16 +70,36 @@ app.get("/", function(req, res) {
 
 });
 
-app.post("/", function(req, res) {
-
-  const itemName = req.body.newItem;
-  const newItem = new Item({
-    name: itemName
-  });
-  newItem.save();
-  res.redirect("/");
-
-});
+// app.post("/", function(req, res) {
+//   const itemName = req.body.newItem;
+//   const listName = req.body.list;
+//   const newItem = new Item({
+//     name: itemName
+//   });
+//
+//   if (listName=== "Today") {
+//     newItem.save();
+//     res.redirect("/");
+//   }else {
+//     List.findOne({name:listName},function(err,foundList){
+//       if(!err){
+//         if(!foundList){
+//           console.log("no list founded");
+//         }else{
+//           foundList.items.push(newItem);
+//           const newListItem = foundList.items;
+//           console.log(newListItem);
+//           res.redirect("/"+listName);
+//           // List.updateOne({name:listName},{items: newListItem});
+//         }
+//       }
+//
+//     });
+//
+//   }
+//
+//
+// });
 
 app.post("/delete",function(req,res){
   const deleteItem = req.body.checkbox;
@@ -90,37 +110,35 @@ app.post("/delete",function(req,res){
   });
   res.redirect("/");
 });
+
 app.get("/:customListName",function(req,res){
   const customListName =req.params.customListName;
+  console.log(customListName);
+  // List.findOne({name: customListName},function(err,foundList){
+  //   if (!err) {
+  //     if (!foundList) {
+  //       const list = new List({
+  //         name:customListName,
+  //         items: defaultItems
+  //       });
+  //
+  //       list.save(function(err){
+  //         if (!err) {
+  //           console.log("save:"+customListName);
+  //           res.redirect("/"+customListName);
+  //         }
+  //       });
+  //
+  //     }else{
+  //       res.render("list", {
+  //           listTitle:foundList.name,
+  //           newListItems: foundList.items
+  //       });
+  //     }
+  //   }
+  //
+  // });
 
-  const list = new List({
-    name:customListName,
-    items: defaultItems
-  });
-
-  List.find({name: customListName},function(err,foundList){
-      if (foundList.length === 0) {
-        const list = new List({
-          name:customListName,
-          items: defaultItems
-        });
-        list.save();
-        res.redirect("/"+customListName);
-      } else {
-
-        // res.render("list", {
-        //   listTitle:foundList.name ,
-        //   newListItems: foundList.items
-        // });
-        console.log(foundList.items);
-      }
-  });
-
-
-
-});
-app.get("/about", function(req, res) {
-  res.render("about");
 });
 
 app.listen(3000, function() {
