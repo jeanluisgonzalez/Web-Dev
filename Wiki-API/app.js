@@ -21,33 +21,58 @@ const articleSchema = new mongoose.Schema({
 });
 
 const Article = mongoose.model("Article",articleSchema);
+////////////////////////////////////////Request Targetting All Articles////////////////////////////////////////
 
-app.get("/articles",function(req,res){
-  Article.find(function(err,foundArticles){
-    if(!err){
-      res.send(foundArticles);
-    }else{
-      res.send(err);
-    }
-  });
-});
-app.post("/articles",function(req,res){
-  const articleTitle = req.body.title;
-  const articleContent = req.body.content;
+app.route("/articles")
+  .get(function(req,res){
+      Article.find(function(err,foundArticles){
+        if(!err){
+          res.send(foundArticles);
+        }else{
+          res.send(err);
+        }
+      });
+    })
+    .post(function(req,res){
+      const articleTitle = req.body.title;
+      const articleContent = req.body.content;
 
-  const newArticle = new Article ({
-    title:articleTitle,
-    content: articleContent
-  });
-  newArticle.save(function(err){
-    if(!err){
-      console.log("Successfully saved");
-    }else{
-      console.log(err);
-    }
-  });
-});
+      const newArticle = new Article ({
+        title:articleTitle,
+        content: articleContent
+      });
+      newArticle.save(function(err){
+        if(!err){
+          res.send("Successfully saved");
+        }else{
+          res.send(err);
+        }
+      });
+    })
+    .delete(function(req,res){
 
+      Article.deleteMany(function(err){
+        if (!err) {
+          res.send("Successfully deleted all articles.");
+        }else{
+          res.send(err);
+        }
+      });
+    });
+////////////////////////////////////////Request Targetting A Specific Article////////////////////////////////////////
+
+app.route("/articles/:articleTitle")
+  .get(function(req, res){
+    const articleTitle = req.params.articleTitle;
+    Article.findOne({title: articleTitle},function(err,foundArticle){
+      if(foundArticle){
+        res.send(foundArticle);
+      }else{
+        res.send("No articles matching that title was found.")
+      }
+    });
+
+  });
 app.listen(3000, function() {
   console.log("Server has started successfully");
 });
