@@ -85,6 +85,9 @@ app.route("/articles/:articleTitle")
         }
       });
 
+  })
+  .patch(function(req,res){
+
   });
 app.listen(3000, function() {
   console.log("Server has started successfully");
