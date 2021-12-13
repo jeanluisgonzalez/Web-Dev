@@ -2,7 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
-
+//npm init -y
+//npm i express body-parser ejs mongoose
 const app = express();
 
 app.set('view engine', 'ejs');
