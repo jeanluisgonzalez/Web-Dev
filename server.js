@@ -3,9 +3,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
-const encrypt = require("mongoose-encryption");
+//const encrypt = require("mongoose-encryption");
+const md5 = require("md5");
 //npm init -y
-//npm i express body-parser ejs mongoose mongoose-encryption dotenv
+//npm i express body-parser ejs mongoose mongoose-encryption dotenv md5 bcrypt
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -17,6 +18,8 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 mongoose.connect("mongodb://localhost:27017/DBname");
+
+//userSchema.plugin(encrypt,{secret: process.env.SECRET, encryptedFields:["password"]});
 
 const schemaNAME = new mongoose.Schema({
   title: String,
