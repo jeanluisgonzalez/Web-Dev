@@ -4,9 +4,9 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 //const encrypt = require("mongoose-encryption");
-const md5 = require("md5");
+//const md5 = require("md5");
 //npm init -y
-//npm i express body-parser ejs mongoose mongoose-encryption dotenv md5 bcrypt
+//npm i express body-parser ejs mongoose mongoose-encryption dotenv bcrypt passport-local passport-local-mongoose express-session
 const app = express();
 
 app.set('view engine', 'ejs');
