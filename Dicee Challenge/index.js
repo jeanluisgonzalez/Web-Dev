@@ -15,6 +15,11 @@ document.querySelector("h1").textContent=h1Text;
 document.querySelector(".img1").setAttribute("src",imgRef1);
 document.querySelector(".img2").setAttribute("src",imgRef2);
 
+function play(){
+  console.log("boton");
+}
+
 function randomNumberGenerator(){
   return Math.floor((Math.random() * 6) + 1);
 }
+document.querySelector("#btn").addEventListener
