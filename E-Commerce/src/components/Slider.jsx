@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
 import ArrowLeftOutlinedIcon from '@mui/icons-material/ArrowLeftOutlined';
 import ArrowRightOutlinedIcon from '@mui/icons-material/ArrowRightOutlined';
-
+import SliderData from "../data.js"
 
 
 const Container = styled.div`
@@ -10,6 +10,7 @@ const Container = styled.div`
     height:100vh;
     display: flex;
     position: relative;
+    overflow: hidden;
 `;
 const Arrow = styled.div`
     width: 50px;
@@ -27,16 +28,21 @@ const Arrow = styled.div`
     margin: auto;
     cursor: pointer;
     opacity: 0.5;
+    z-index: 2;
     
 `;
 const Wrapper = styled.div`
     height: 100%;
+    display: flex;
+    transition: all 1.5s ease;
+    transform: translateX(${props=>props.slideIndex * -100}vw);
 `;
 const Slide = styled.div`
     width: 100vw;
     height: 100vh;
     display: flex;
     align-items: center;
+    background-color: #${props=>props.bg};
 `;
 const ImgContainer = styled.div`
     height:100%;
@@ -50,30 +56,54 @@ const InfoContainer = styled.div`
     flex: 1;
     padding: 50px;
 `;
-const Title = styled.h1``;
-const Desc = styled.p``;
-const Button = styled.button``;
+const Title = styled.h1`
+    font-size:70px;
+
+`;
+const Desc = styled.p`
+    margin: 50px 0px;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 3px;
+`;
+const Button = styled.button`
+    padding: 10px;
+    font-size: 20px;
+    background-color: transparent;
+    cursor: pointer;
+`;
 
 const Slider = () => {
-    
+    const [slideIndex,setSlideIndex]= useState(0);
+    const handleClik =(direction) =>{
+        if(direction ==="left"){
+            setSlideIndex(slideIndex > 0 ? slideIndex -1: 2 );
+        }else{
+            setSlideIndex(slideIndex < 2 ? slideIndex +1: 0);
+        }
+    }
     return (
         <Container>
-            <Arrow direction="left">
+            <Arrow direction="left" onClick={()=>handleClik("left")}>
                 <ArrowLeftOutlinedIcon/>
             </Arrow>
-            <Wrapper>
-                <Slide>
-                    <ImgContainer>
-                        <Image src="https://thumbs.dreamstime.com/b/fashion-model-shopping-bag-isolated-white-background-full-bags-length-portrait-young-woman-smile-44465036.jpg"/>
-                    </ImgContainer>
-                    <InfoContainer>
-                        <Title/>
-                        <Desc/>
-                        <Button/>
-                    </InfoContainer>
-                </Slide>
+            <Wrapper slideIndex={slideIndex}>
+                {SliderData.map((sale)=>{
+                   return(
+                    <Slide  key={sale.id} bg={sale.bg}>
+                        <ImgContainer>
+                            <Image src={sale.img}/>
+                        </ImgContainer>
+                        <InfoContainer>
+                            <Title>{sale.title}</Title>
+                            <Desc>{sale.desc}</Desc>
+                            <Button>SHOW NOW</Button>
+                        </InfoContainer>
+                    </Slide>); 
+                })
+                     }
             </Wrapper>
-            <Arrow direction="right">
+            <Arrow direction="right" onClick={()=>handleClik("right")}>
                 <ArrowRightOutlinedIcon/>
             </Arrow>
 
