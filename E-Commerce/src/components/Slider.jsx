@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components';
 import ArrowLeftOutlinedIcon from '@mui/icons-material/ArrowLeftOutlined';
 import ArrowRightOutlinedIcon from '@mui/icons-material/ArrowRightOutlined';
-import SliderData from "../data.js"
+import {sliderItems} from "../data.js"
 
 
 const Container = styled.div`
@@ -88,7 +88,7 @@ const Slider = () => {
                 <ArrowLeftOutlinedIcon/>
             </Arrow>
             <Wrapper slideIndex={slideIndex}>
-                {SliderData.map((sale)=>{
+                {sliderItems.map((sale)=>{
                    return(
                     <Slide  key={sale.id} bg={sale.bg}>
                         <ImgContainer>
