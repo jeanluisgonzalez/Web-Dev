@@ -26,7 +26,15 @@ export default function Sidebar() {
           <li className="sidebarListItem">Cinema</li>
         </ul>
       </div>
-      <div className="sidebarItem"></div>
+      <div className="sidebarItem">
+        <span className="sidebarTitle">FOLLOW US</span>
+        <div className="sidebarSocial">
+          <i className="sidebarIcon fa-brands fa-facebook-square"></i>
+          <i className="sidebarIcon fa-brands fa-twitter-square"></i>
+          <i className="sidebarIcon fa-brands fa-pinterest-square"></i>
+          <i className="sidebarIcon fa-brands fa-instagram-square"></i>
+        </div>
+      </div>
     </div>
   );
 }
