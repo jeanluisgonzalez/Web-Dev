@@ -11,8 +11,8 @@ export default function post() {
       />
       <div className="postInfo">
         <div className="postCats">
-          <span className="postcat">Music</span>
-          <span className="postcat">Life</span>
+          <span className="postCat">Music</span>
+          <span className="postCat">Life</span>
         </div>
         <span className="postTitle">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -20,6 +20,17 @@ export default function post() {
         <hr />
         <span className="postDate">1 hour ago</span>
       </div>
+      <p className="postDesc">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id deserunt
+        nesciunt maxime ex facere ipsa a laudantium veniam, neque aut fuga, quae
+        soluta eaque, esse magnam perspiciatis provident eligendi voluptatum!
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id deserunt
+        nesciunt maxime ex facere ipsa a laudantium veniam, neque aut fuga, quae
+        soluta eaque, esse magnam perspiciatis provident eligendi voluptatum!
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id deserunt
+        nesciunt maxime ex facere ipsa a laudantium veniam, neque aut fuga, quae
+        soluta eaque, esse magnam perspiciatis provident eligendi voluptatum!
+      </p>
     </div>
   );
 }
