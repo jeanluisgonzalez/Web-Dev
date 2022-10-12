@@ -13,22 +13,19 @@ export default function SinglePost() {
         <h1 className="singlePostTitle">
           Lorem ipsum dolor sit amet
           <div className="singlePostEdit">
-            <i className="SinglePostIcon fa-regular fa-pen-to-square"></i>
-            <i className="SinglePostIcon fa-regular fa-trash-can"></i>
+            <i className="singlePostIcon fa-regular fa-pen-to-square"></i>
+            <i className="singlePostIcon fa-regular fa-trash-can"></i>
           </div>
         </h1>
-        <div className="siglePostInfo">
-          <span className="SinglePostAuthor">
+        <div className="singlePostInfo">
+          <span className="singlePostAuthor">
             Author: <b>Jean </b>
           </span>
-          <span className="SinglePostDate">
-            Date: <b>1 hour ago </b>
-          </span>
-          <span className="SinglePostDate">
-            Date: <b>1 hour ago</b>
+          <span className="singlePostDate">
+            <b>1 hour ago</b>
           </span>
         </div>
-        <p>
+        <p className="singlePostDesc">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis
           accusamus, ratione suscipit sequi sit cum veniam nulla. Dicta
           perferendis consequuntur at rem ipsum minus sequi, vero odit, nulla
