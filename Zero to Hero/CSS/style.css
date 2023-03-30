@@ -3,13 +3,27 @@ body {
 }
 
 h2 {
-    color:red;
+    color:#AA4139;
     text-align: center;
-    border: 5px solid purple;
+    border: 5px solid rgb(255,176,170);
+    cursor: pointer;
 
 }
 
 p {
     color: pink;
 
+}
+
+li{
+    list-style: none;
+    display: inline-block;
+}
+
+.webtext{
+    border: 5px dashed green;
+}
+
+.active{
+    color: red;
 }
