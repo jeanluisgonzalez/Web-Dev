@@ -18,7 +18,7 @@ const VideoDetail = () => {
     });
   },[id]);
   
-    const {snippet} = videoDetail;
+  const {snippet:{title} = {}} = videoDetail || {};
   
   
 
@@ -31,7 +31,7 @@ const VideoDetail = () => {
               className="react-player" controls
             />
             <Typography color="#fff" variant ="h5" fontWeight="bold" p={2}>
-            {videoDetail && videoDetail.snippet && snippet.title}
+            {title}
             </Typography>
           </Box>
         </Box>
