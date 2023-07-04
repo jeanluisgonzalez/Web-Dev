@@ -7,6 +7,7 @@ import RightArrowIcon from '../assets/icons/right-arrow.png';
 import LeftArrowIcon from '../assets/icons/left-arrow.png';
 
 const LeftArrow = () => {
+  console.log('L');
   const { scrollPrev } = useContext(VisibilityContext);
 
   return (
@@ -17,6 +18,7 @@ const LeftArrow = () => {
 };
 
 const RightArrow = () => {
+  console.log('R');
   const { scrollNext } = useContext(VisibilityContext);
 
   return (
