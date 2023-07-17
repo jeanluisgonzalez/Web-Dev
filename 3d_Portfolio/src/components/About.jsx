@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { services } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
+import { SectionWrapper } from "../hoc";
 
 const ServiceCard = ({ index, title, icon }) => {
   return (
@@ -42,35 +43,32 @@ const About = () => {
       </motion.div>
       <motion.p
         variants={fadeIn("", "", 0.1, 1)}
-        className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
+        className="mt-3 text-secondary text-[16px] max-w-3xl leading-[30px]"
       >
         I am a web developer with a strong skill set in JavaScript, React,
         Node.js, MongoDB, and MySQL. I specialize in building dynamic and
         engaging user experiences, utilizing my solid understanding of these
-        technologies. <br /> <br />
+        technologies. <br />
         With JavaScript as my primary language, I create efficient frontend
         functionality and implement advanced interactive features. I have
         experience with React, allowing me to design reusable and scalable user
         interfaces that enhance performance and deliver a smooth user
-        experience. <br /> <br />
+        experience. <br />
         On the backend, I excel in developing server-side applications and APIs
         using Node.js and Express.js. I ensure secure authentication, handle
         data validation, and integrate databases like MongoDB and MySQL to build
-        robust and reliable backend solutions. <br /> <br />
+        robust and reliable backend solutions. <br />
         My database expertise extends to both NoSQL (MongoDB) and relational
         databases (MySQL), enabling me to design efficient data models and write
         optimized queries. I seamlessly integrate databases with the backend
-        stack to meet specific application requirements. <br /> <br />
+        stack to meet specific application requirements. <br />
         Passionate about continuous learning and professional growth, I stay
         updated with the latest industry trends and best practices.
         Collaborating effectively with cross-functional teams, I deliver
-        high-quality solutions that meet business requirements. <br /> <br />I
-        am excited to leverage my skills in JavaScript, React, Node.js, MongoDB,
-        and MySQL to build scalable, performant, and user-friendly web
-        applications.
+        high-quality solutions that meet business requirements.
       </motion.p>
 
-      <div className="mt-20 flex flex-wrap gap-10">
+      <div className="mt-14 flex flex-wrap gap-10">
         {services.map((services, index) => (
           <ServiceCard key={services.title} index={index} {...services} />
         ))}
@@ -79,4 +77,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default SectionWrapper(About, "about");
