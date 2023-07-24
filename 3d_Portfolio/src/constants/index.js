@@ -178,67 +178,42 @@ const testimonials = [
 
 const projects = [
   {
-    name: "Car Rent",
+    name: "JGTube",
     description:
-      "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+      "Explore a stunning YouTube clone web application that mimics some of the beloved features of the original platform. This project showcases my web development skills in creating an immersive user experience. From seamless video playback to interactive user interfaces, the YouTube clone demonstrates my dedication to crafting captivating web applications.",
     tags: [
       {
         name: "react",
         color: "blue-text-gradient",
       },
       {
-        name: "mongodb",
-        color: "green-text-gradient",
-      },
-      {
-        name: "tailwind",
-        color: "pink-text-gradient",
+        name: "mui",
+        color: "blue-text-gradient",
       },
     ],
     image: carrent,
-    source_code_link: "https://github.com/",
+    source_code_link: "https://earnest-gingersnap-7fb166.netlify.app/",
   },
   {
-    name: "Job IT",
+    name: "Gym-exercises",
     description:
-      "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
+      "Web application that enables users to search for exercises, Explore exercises by body parts with our user-friendly web application. Find workout examples and videos to elevate your fitness routine.",
     tags: [
       {
         name: "react",
         color: "blue-text-gradient",
       },
       {
-        name: "restapi",
-        color: "green-text-gradient",
+        name: "mui",
+        color: "blue-text-gradient",
       },
       {
-        name: "scss",
+        name: "rapidapi",
         color: "pink-text-gradient",
       },
     ],
     image: jobit,
-    source_code_link: "https://github.com/",
-  },
-  {
-    name: "Trip Guide",
-    description:
-      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
-    tags: [
-      {
-        name: "nextjs",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "supabase",
-        color: "green-text-gradient",
-      },
-      {
-        name: "css",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: tripguide,
-    source_code_link: "https://github.com/",
+    source_code_link: "https://bejewelled-cassata-992d6a.netlify.app/",
   },
 ];
 
