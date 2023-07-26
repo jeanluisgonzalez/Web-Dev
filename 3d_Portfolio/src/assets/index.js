@@ -30,10 +30,14 @@ import tesla from "./company/tesla.png";
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
+import jgTube from "./jgTube.png";
+import gymExercises from "./gym-exercises.png";
+import netlify from "./netlify-logo-svg-vector.svg";
 
 export {
   logo,
   backend,
+  netlify,
   creator,
   mobile,
   web,
@@ -61,4 +65,6 @@ export {
   jobit,
   tripguide,
   jgLogo,
+  jgTube,
+  gymExercises,
 };

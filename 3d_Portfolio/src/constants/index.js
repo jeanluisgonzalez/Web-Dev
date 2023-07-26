@@ -23,6 +23,8 @@ import {
   jobit,
   tripguide,
   threejs,
+  gymExercises,
+  jgTube,
 } from "../assets";
 
 export const navLinks = [
@@ -188,10 +190,14 @@ const projects = [
       },
       {
         name: "mui",
-        color: "blue-text-gradient",
+        color: "green-text-gradient",
+      },
+      {
+        name: "rapidapi",
+        color: "pink-text-gradient",
       },
     ],
-    image: carrent,
+    image: jgTube,
     source_code_link: "https://earnest-gingersnap-7fb166.netlify.app/",
   },
   {
@@ -205,14 +211,14 @@ const projects = [
       },
       {
         name: "mui",
-        color: "blue-text-gradient",
+        color: "green-text-gradient",
       },
       {
         name: "rapidapi",
         color: "pink-text-gradient",
       },
     ],
-    image: jobit,
+    image: gymExercises,
     source_code_link: "https://bejewelled-cassata-992d6a.netlify.app/",
   },
 ];
